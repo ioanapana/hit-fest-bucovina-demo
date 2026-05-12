@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Hit Fest Bucovina · PWA Design System & Prototype</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tokens.css">
+  <style>
+    html, body { margin: 0; height: 100%; background: #f0eee9; }
+    body { font-family: "Inter", system-ui, sans-serif; }
+  </style>
+</head>
+<body>
+  <template id="__bundler_thumbnail" data-bg-color="#1ABC9C">
+    <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+      <rect width="1200" height="800" fill="#1ABC9C"/>
+      <circle cx="600" cy="400" r="220" fill="#FAF6E8"/>
+      <circle cx="600" cy="400" r="80" fill="#1ABC9C"/>
+      <circle cx="600" cy="400" r="20" fill="#0A2540"/>
+      <text x="600" y="680" font-family="Bebas Neue, Anton, Impact, sans-serif" font-size="84" fill="#FAF6E8" text-anchor="middle" letter-spacing="6">HIT FEST BUCOVINA</text>
+      <circle cx="380" cy="180" r="14" fill="#FF6B7A"/>
+      <circle cx="430" cy="180" r="14" fill="#4A90E2"/>
+      <circle cx="480" cy="180" r="14" fill="#F4C430"/>
+      <circle cx="530" cy="180" r="14" fill="#FFB6A8"/>
+    </svg>
+  </template>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="ios-frame.jsx"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="data.jsx"></script>
+  <script type="text/babel" src="i18n.jsx"></script>
+  <script type="text/babel" src="components.jsx"></script>
+  <script type="text/babel" src="screens-1.jsx"></script>
+  <script type="text/babel" src="screens-2.jsx"></script>
+  <script type="text/babel" src="screens-3.jsx"></script>
+  <script type="text/babel" src="settings.jsx"></script>
+  <script type="text/babel" src="validation.jsx"></script>
+  <script type="text/babel" src="validation-flow.jsx"></script>
+  <script type="text/babel" src="flow-integration.jsx"></script>
+  <script type="text/babel" src="app.jsx"></script>
+</body>
+</html>

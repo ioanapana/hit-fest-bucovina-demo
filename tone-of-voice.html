@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8" />
+<title>Hit Fest Bucovina · Tone of Voice & Store Listings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Archivo+Narrow:wght@600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #F6F1E7;
+    --paper-2: #EDE5D2;
+    --ink: #1F2E4D;
+    --ink-2: #4A5878;
+    --coral: #FF6B7A;
+    --turcoaz: #2BB6B0;
+    --galben: #F4C247;
+    --crem-2: #E5D8BC;
+    --rule: rgba(31,46,77,0.14);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--paper); color: var(--ink);
+    font-family: 'Archivo', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  .doc { max-width: 880px; margin: 0 auto; padding: 56px 48px 96px; }
+  .eyebrow { font-family: 'Archivo Narrow', sans-serif; font-weight: 700;
+    letter-spacing: 0.3em; font-size: 12px; color: var(--coral); }
+  h1 { font-family: 'Archivo Narrow', sans-serif; font-weight: 800;
+    letter-spacing: 0.02em; font-size: 64px; line-height: 0.95; margin: 8px 0 12px;
+    color: var(--ink); text-wrap: balance; }
+  h2 { font-family: 'Archivo Narrow', sans-serif; font-weight: 800;
+    letter-spacing: 0.04em; font-size: 28px; line-height: 1.05; margin: 48px 0 8px;
+    color: var(--ink); }
+  h3 { font-family: 'Archivo Narrow', sans-serif; font-weight: 700;
+    letter-spacing: 0.06em; font-size: 14px; text-transform: uppercase;
+    color: var(--ink-2); margin: 24px 0 8px; }
+  p, li { font-size: 15px; line-height: 1.65; color: var(--ink); }
+  p.lede { font-size: 18px; line-height: 1.55; color: var(--ink-2);
+    max-width: 64ch; text-wrap: pretty; }
+  hr { border: none; border-top: 1px solid var(--rule); margin: 56px 0; }
+  .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 24px 0; }
+  .pillar { background: var(--paper-2); border-radius: 16px; padding: 20px;
+    border: 1px solid var(--rule); }
+  .pillar h4 { margin: 0 0 6px; font-family: 'Archivo Narrow', sans-serif;
+    letter-spacing: 0.06em; font-size: 13px; color: var(--coral); text-transform: uppercase; }
+  .pillar p { margin: 0; font-size: 14px; line-height: 1.5; color: var(--ink); }
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 16px 0;
+    border-radius: 14px; overflow: hidden; border: 1px solid var(--rule); }
+  .compare > div { padding: 14px 18px; background: var(--paper-2); }
+  .compare > .yes { background: rgba(43,182,176,0.10); }
+  .compare > .no  { background: rgba(255,107,122,0.10); }
+  .compare h5 { margin: 0 0 6px; font-family: 'Archivo Narrow', sans-serif;
+    font-size: 12px; letter-spacing: 0.18em; }
+  .compare .yes h5 { color: var(--turcoaz); }
+  .compare .no h5 { color: var(--coral); }
+  .compare ul { margin: 4px 0 0; padding-left: 18px; }
+  .compare li { font-size: 13.5px; line-height: 1.5; }
+  .quote { font-family: 'Archivo Narrow', sans-serif; font-size: 22px; line-height: 1.25;
+    color: var(--ink); border-left: 4px solid var(--coral);
+    padding: 4px 0 4px 18px; margin: 16px 0; font-weight: 600; text-wrap: balance; }
+  .vocab { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px 16px;
+    background: var(--paper-2); border-radius: 14px; padding: 18px 22px;
+    font-size: 13.5px; border: 1px solid var(--rule); }
+  .vocab .row { display: contents; }
+  .vocab .from { color: var(--coral); text-decoration: line-through; opacity: 0.7; }
+  .vocab .to { color: var(--turcoaz); font-weight: 600; }
+  .vocab .why { color: var(--ink-2); font-size: 12.5px; }
+  .listing { background: #fff; border-radius: 18px; padding: 24px 28px;
+    border: 1px solid var(--rule); margin: 16px 0; box-shadow: 0 1px 0 rgba(0,0,0,0.02); }
+  .listing .meta { font-family: 'Space Mono', monospace; font-size: 11px;
+    letter-spacing: 0.12em; color: var(--ink-2); text-transform: uppercase; }
+  .listing .title { font-family: 'Archivo Narrow', sans-serif; font-weight: 800;
+    font-size: 24px; letter-spacing: 0.02em; margin: 4px 0 2px; }
+  .listing .sub { font-size: 14px; color: var(--ink-2); margin-bottom: 14px; }
+  .listing .field { margin: 12px 0; }
+  .listing .field-label { font-family: 'Archivo Narrow', sans-serif; font-size: 11px;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 4px; }
+  .listing .field-value { font-size: 14px; line-height: 1.55; white-space: pre-wrap; }
+  .listing .field-value.short { font-weight: 500; }
+  .listing .chars { font-family: 'Space Mono', monospace; font-size: 10.5px;
+    color: var(--ink-2); margin-top: 2px; }
+  .kw { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+  .kw span { background: var(--crem-2); padding: 3px 10px; border-radius: 999px;
+    font-size: 11.5px; font-family: 'Space Mono', monospace; color: var(--ink); }
+  .lang-pill { display: inline-block; font-family: 'Space Mono', monospace;
+    font-size: 10px; padding: 2px 8px; border-radius: 999px; background: var(--ink);
+    color: var(--paper); letter-spacing: 0.1em; margin-right: 6px; vertical-align: 2px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 720px) {
+    .doc { padding: 32px 20px 72px; }
+    h1 { font-size: 44px; }
+    .pillars, .vocab, .grid-2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<main class="doc">
+
+  <div class="eyebrow">HIT FEST BUCOVINA · 2026</div>
+  <h1>Tone of Voice & Store Listings</h1>
+  <p class="lede">Cum vorbește aplicația Hit Fest Bucovina — și ce scrie pe paginile din App Store și Google Play. Un singur document, două direcții: brand voice + listing copy ready-to-publish (RO + EN).</p>
+
+  <hr />
+
+  <h2>1 · Brand voice</h2>
+  <p class="lede">Hit Fest Bucovina e festivalul oamenilor care își amintesc cine au fost. Vocea aplicației trebuie să sune ca un prieten bun de generație: cald, glumeț, locuit. Niciodată corporate. Niciodată tech-bro.</p>
+
+  <h3>Trei piloni</h3>
+  <div class="pillars">
+    <div class="pillar">
+      <h4>Cald, nu siropos</h4>
+      <p>Vorbim ca un prieten care te-a sunat să-ți spună „hai să mergem împreună". Folosim persoana a doua, prezent, propoziții scurte. Fără superlative goale.</p>
+    </div>
+    <div class="pillar">
+      <h4>Local, nu provincial</h4>
+      <p>Suntem mândri că suntem din Bucovina și nu ne ascundem. Folosim referințe locale (Sucevița, Cacica, „pe vale"), dar fără pitoresc forțat. Festivalul e modern, ține pasul cu Untold și Beach Please.</p>
+    </div>
+    <div class="pillar">
+      <h4>Retro, nu nostalgic</h4>
+      <p>Anii '80–'90–2000 sunt combustibil, nu refugiu. Casete, CD-uri și MP3 player sunt obiecte de orgoliu — nu trofee triste. Suntem aici, în 2026, cu muzica de atunci.</p>
+    </div>
+  </div>
+
+  <h3>Cum sună (exemple)</h3>
+  <div class="compare">
+    <div class="yes">
+      <h5>AȘA DA</h5>
+      <ul>
+        <li>„Generația ta e CD. Bun venit acasă."</li>
+        <li>„Mai sunt 12 zile · ai pregătit playlist-ul?"</li>
+        <li>„Cumpără bilet · 240 LEI"</li>
+        <li>„Cazare la Pensiunea Casa Bucovineană · 20% reducere pentru tine."</li>
+        <li>„Codul tău: HF2026-A7F2K. Arată-l la casă."</li>
+        <li>„Festivalul s-a terminat. Mersi că ai fost. Ne vedem în 2027."</li>
+      </ul>
+    </div>
+    <div class="no">
+      <h5>AȘA NU</h5>
+      <ul>
+        <li>„Welcome la cel mai tare festival al verii! 🔥🎉"</li>
+        <li>„Don't miss out! Limited time only!"</li>
+        <li>„Achiziționați acum biletul dumneavoastră"</li>
+        <li>„Discover unforgettable experiences at our partners"</li>
+        <li>„Your unique identifier code"</li>
+        <li>„Thank you for being part of our journey"</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Reguli de scris</h3>
+  <ul>
+    <li><strong>Persoana a doua, singular.</strong> „Tu". Nu „dumneavoastră", niciodată „voi".</li>
+    <li><strong>Propoziții scurte.</strong> Maxim 12 cuvinte pe rând. Spațiu pentru a respira.</li>
+    <li><strong>UPPERCASE doar pentru ACȚIUNI și TITLURI.</strong> Niciodată pentru paragrafe.</li>
+    <li><strong>Numerele rămân cifre.</strong> „3 zile", „17 artiști", „240 LEI". Nu „trei zile".</li>
+    <li><strong>Diacritice mereu.</strong> ă, â, î, ș, ț. „Reduceri", nu „reduceri" greșit.</li>
+    <li><strong>Fără emoji în copy.</strong> Singurul accept: 📼 💿 🎧 în context generație. Nimic altceva.</li>
+    <li><strong>Fără exclamații cumulate.</strong> Maxim un „!" pe ecran. De obicei zero.</li>
+    <li><strong>Numele festivalului:</strong> „Hit Fest Bucovina" (cu spațiu). În titluri scurte: „Hit Fest".</li>
+  </ul>
+
+  <h3>Vocabular: nu spune asta, spune asta</h3>
+  <div class="vocab">
+    <div class="row"><div class="from">Achiziționează</div><div class="to">Cumpără</div><div class="why">Mai uman, mai scurt.</div></div>
+    <div class="row"><div class="from">Beneficiar</div><div class="to">Tu</div><div class="why">Nu suntem la primărie.</div></div>
+    <div class="row"><div class="from">Eveniment</div><div class="to">Festival / show</div><div class="why">„Eveniment" e o nuntă.</div></div>
+    <div class="row"><div class="from">Discount</div><div class="to">Reducere</div><div class="why">Suntem în Bucovina, vorbim românește.</div></div>
+    <div class="row"><div class="from">Voucher</div><div class="to">Cod</div><div class="why">Mai scurt, mai clar.</div></div>
+    <div class="row"><div class="from">Experiență</div><div class="to">(scoate cuvântul)</div><div class="why">Cel mai gol cuvânt din PR-ul de festival.</div></div>
+    <div class="row"><div class="from">Confirmă comanda</div><div class="to">Plătește</div><div class="why">Spune exact ce se întâmplă.</div></div>
+    <div class="row"><div class="from">Identificator unic</div><div class="to">Cod</div><div class="why">Vorbim ca lumea.</div></div>
+    <div class="row"><div class="from">Partener oficial</div><div class="to">Partener</div><div class="why">„Oficial" nu adaugă nimic.</div></div>
+    <div class="row"><div class="from">Live show</div><div class="to">Concert</div><div class="why">Anglicismul e leneș aici.</div></div>
+  </div>
+
+  <h3>Voce per ecran</h3>
+  <ul>
+    <li><strong>Onboarding</strong> — primul contact, cel mai cald. Glume scurte permise. „Bun venit acasă."</li>
+    <li><strong>Bilete & checkout</strong> — sobru și clar. Bani la mijloc. Zero glume.</li>
+    <li><strong>Reduceri parteneri</strong> — entuziasm calm. „Ai 20% reducere la cazare. Hai să folosești codul."</li>
+    <li><strong>Erori</strong> — niciodată „Ooops!". Spune ce s-a întâmplat și ce să facă utilizatorul. „Nu am putut salva. Încearcă din nou."</li>
+    <li><strong>Hartă & info</strong> — utilitar, scurt. Răspunzi la o întrebare practică, nu vinzi.</li>
+    <li><strong>Confirmare bilet</strong> — sărbătoresc, dar curat. „Gata. Bilet cumpărat. Codul tău e HF2026-A7F2K."</li>
+  </ul>
+
+  <h3>Microcopy — cele 12 fraze recurente</h3>
+  <div class="vocab" style="grid-template-columns: 1fr 1.6fr;">
+    <div class="row"><div class="to">CTA primary</div><div>CUMPĂRĂ BILET · 240 LEI</div></div>
+    <div class="row"><div class="to">CTA secundar</div><div>Vezi line-up</div></div>
+    <div class="row"><div class="to">Countdown</div><div>Mai sunt 12 zile</div></div>
+    <div class="row"><div class="to">Empty state — favoriți</div><div>N-ai favoriți încă. Apasă inima la artiști.</div></div>
+    <div class="row"><div class="to">Empty state — reduceri</div><div>Cumperi bilet și primești coduri de reducere pentru cazări, restaurante și locuri pe vale.</div></div>
+    <div class="row"><div class="to">Confirmare cumpărare</div><div>Gata. Bilet în portofel.</div></div>
+    <div class="row"><div class="to">Toast — salvat</div><div>Salvat la favoriți</div></div>
+    <div class="row"><div class="to">Toast — copiat cod</div><div>Cod copiat</div></div>
+    <div class="row"><div class="to">Loader scurt</div><div>O secundă...</div></div>
+    <div class="row"><div class="to">Eroare rețea</div><div>Nu prinde semnal. Încearcă din nou.</div></div>
+    <div class="row"><div class="to">Eroare plată</div><div>Plata n-a trecut. Cardul tău n-a fost taxat.</div></div>
+    <div class="row"><div class="to">Notificare „urmează"</div><div>Andra urcă pe scenă în 15 minute. Coral Stage.</div></div>
+  </div>
+
+  <h3>Tagline-uri scurte (de avut la îndemână)</h3>
+  <div class="quote">Muzica anilor '80, '90 și 2000. Pe vale, la Hit Fest Bucovina.</div>
+  <div class="quote">Generația ta nu s-a dus nicăieri. E aici, în august.</div>
+  <div class="quote">Trei zile. Șaptesprezece artiști. O singură generație: a ta.</div>
+
+  <hr />
+
+  <h2>2 · Store listings</h2>
+  <p class="lede">Copy ready-to-publish pentru App Store (iOS) și Google Play (Android). Două limbi (RO + EN). Toate câmpurile respectă limitele oficiale de caractere.</p>
+
+  <h3>App Store — limite oficiale</h3>
+  <p>Nume aplicație: 30 caractere · Subtitle: 30 caractere · Promotional text: 170 · Description: 4000 · Keywords (toate la un loc): 100.</p>
+
+  <div class="listing">
+    <div class="meta"><span class="lang-pill">RO</span>APP STORE · ROMÂNĂ</div>
+    <div class="title">Hit Fest Bucovina</div>
+    <div class="sub">Numele oficial al aplicației pe iOS.</div>
+
+    <div class="field">
+      <div class="field-label">Name · 30 char</div>
+      <div class="field-value short">Hit Fest Bucovina</div>
+      <div class="chars">17 / 30</div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">Subtitle · 30 char</div>
+      <div class="field-value short">Festivalul anilor '80, '90, 2000</div>
+      <div class="chars">30 / 30</div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">Promotional text · 170 char</div>
+      <div class="field-value">Cumperi biletul direct din aplicație și primești coduri de reducere la cazări, restaurante și obiective turistice din toată Bucovina. 7–9 august, pe vale.</div>
+      <div class="chars">159 / 170</div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">Description · 4000 char</div>
+      <div class="field-value">Hit Fest Bucovina e festivalul muzicii care te-a crescut. Trei zile, 17 artiști, un singur loc: Bucovina, 7–9 august 2026.
+
+Aplicația oficială te ține aproape de tot ce se întâmplă:
+
+• Cumperi bilet în 30 de secunde, direct din telefon.
+• Vezi line-up-ul complet — Andra, Smiley, Bere Gratis, The Motans și încă 13 nume — cu orele exacte de scenă.
+• Salvezi artiștii preferați și primești o notificare cu 15 minute înainte să urce pe scenă.
+• Găsești harta festivalului: scenele, bara, food court-ul, parcările, toaletele. Funcționează și fără internet.
+• Primești un cod personal pentru fiecare bilet cumpărat. Cu el ai între 10% și 25% reducere la 8 parteneri din Bucovina: pensiuni, restaurante locale, Salina Cacica, mănăstirea Sucevița, ATV-uri și SPA.
+
+Alege-ți „generația" — Casete, CD sau MP3 — și aplicația își schimbă paleta și fontul după tine.
+
+Trei zile pe vale, în Bucovina. Aplicația te conduce de la prima zi până la ultimul bis.
+
+—
+Organizator: Asociația Hit Fest Bucovina
+Suport: contact@hitfestbucovina.ro
+Politica de confidențialitate: hitfestbucovina.ro/privacy</div>
+      <div class="chars">~1130 / 4000</div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">Keywords · 100 char (separate cu virgulă, fără spații)</div>
+      <div class="kw">
+        <span>festival</span><span>bucovina</span><span>muzica</span><span>retro</span>
+        <span>anii90</span><span>concerte</span><span>bilete</span><span>suceava</span>
+        <span>andra</span><span>smiley</span><span>turism</span><span>moldova</span>
+      </div>
+      <div class="chars">festival,bucovina,muzica,retro,anii90,concerte,bilete,suceava,andra,smiley,turism,moldova — 94 / 100</div>
+    </div>
+  </div>
+
+  <div class="listing">
+    <div class="meta"><span class="lang-pill">EN</span>APP STORE · ENGLISH</div>
+    <div class="title">Hit Fest Bucovina</div>
+    <div class="sub">English listing — secondary market (Western Europe, diaspora).</div>
+
+    <div class="field">
+      <div class="field-label">Name · 30 char</div>
+      <div class="field-value short">Hit Fest Bucovina</div>
+      <div class="chars">17 / 30</div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">Subtitle · 30 char</div>
+      <div class="field-value short">80s, 90s &amp; 00s music festival</div>
+      <div class="chars">28 / 30</div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">Promotional text · 170 char</div>
+      <div class="field-value">Buy your ticket inside the app and unlock discounts at hotels, restaurants and landmarks across Bucovina. 7–9 August in the green valleys of northern Romania.</div>
+      <div class="chars">158 / 170</div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">Description · 4000 char</div>
+      <div class="field-value">Hit Fest Bucovina is the festival for the music that raised you. Three days, 17 artists, one place: Bucovina, Romania — 7–9 August 2026.
+
+The official app keeps you close to everything that's happening:
+
+• Buy your ticket in 30 seconds, straight from your phone.
+• Browse the full line-up — Andra, Smiley, Bere Gratis, The Motans and 13 more — with exact stage times.
+• Save the artists you love and get a notification 15 minutes before they step on stage.
+• Use the festival map: stages, bars, food court, parking, toilets. Works offline.
+• Get a personal code with every ticket. It unlocks 10–25% discounts with 8 partners across Bucovina — guesthouses, local restaurants, the Cacica Salt Mine, Sucevița Monastery, ATV tours and a spa.
+
+Pick your „generation" — Cassette, CD or MP3 — and the app swaps its colours and typography to match you.
+
+Three days in the valleys of Bucovina. The app walks you from day one to the last encore.
+
+—
+Organiser: Asociația Hit Fest Bucovina
+Support: contact@hitfestbucovina.ro
+Privacy policy: hitfestbucovina.ro/privacy</div>
+      <div class="chars">~1090 / 4000</div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">Keywords · 100 char</div>
+      <div class="chars">festival,music,romania,bucovina,retro,90s,concerts,tickets,andra,smiley,travel,moldavia — 87 / 100</div>
+    </div>
+  </div>
+
+  <h3>Google Play — limite oficiale</h3>
+  <p>Title: 30 caractere · Short description: 80 caractere · Full description: 4000 caractere.</p>
+
+  <div class="listing">
+    <div class="meta"><span class="lang-pill">RO</span>GOOGLE PLAY · ROMÂNĂ</div>
+    <div class="title">Hit Fest Bucovina</div>
+
+    <div class="field">
+      <div class="field-label">Title · 30 char</div>
+      <div class="field-value short">Hit Fest Bucovina · '80–2000</div>
+      <div class="chars">28 / 30</div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">Short description · 80 char</div>
+      <div class="field-value short">Festivalul muzicii anilor '80, '90, 2000. Bilete, line-up și reduceri.</div>
+      <div class="chars">70 / 80</div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">Full description · 4000 char</div>
+      <div class="field-value">Hit Fest Bucovina · 7–9 august 2026
+
+Festivalul muzicii care te-a crescut. Trei zile, 17 artiști, pe vale, în Bucovina.
+
+CE FACI ÎN APLICAȚIE
+• Cumperi bilet direct din telefon, în mai puțin de un minut.
+• Vezi line-up-ul complet și orele fiecărui artist.
+• Salvezi favoriții și primești notificare cu 15 minute înainte să urce pe scenă.
+• Folosești harta festivalului (funcționează și offline).
+• Primești un cod personal pentru fiecare bilet și deblochezi reduceri de 10–25% la cazări, restaurante și obiective turistice din toată Bucovina.
+
+ALEGE-ȚI GENERAȚIA
+Casete, CD sau MP3. Aplicația își schimbă culorile, fontul și starea după anul în care te-ai născut. Pentru că nu ascultăm cu toții la fel.
+
+ARTIȘTI ÎN LINE-UP 2026
+Andra · Smiley · Bere Gratis · The Motans · 3 Sud Est · Voltaj · Andre · Akcent · și mulți alții.
+
+PARTENERI CU REDUCERI
+Pensiunea Casa Bucovineană · Salina Cacica · Mănăstirea Sucevița · Hanul Vechi din Câmpulung · ATV Adventure Bucovina · Spa Doftana · și încă 2.
+
+Aplicația merge fără internet pentru hartă și bilet. Internet ai nevoie doar la cumpărare și la activarea codurilor.
+
+—
+Organizator: Asociația Hit Fest Bucovina
+Suport: contact@hitfestbucovina.ro</div>
+      <div class="chars">~1180 / 4000</div>
+    </div>
+  </div>
+
+  <div class="listing">
+    <div class="meta"><span class="lang-pill">EN</span>GOOGLE PLAY · ENGLISH</div>
+    <div class="title">Hit Fest Bucovina</div>
+
+    <div class="field">
+      <div class="field-label">Title · 30 char</div>
+      <div class="field-value short">Hit Fest Bucovina · 80s–00s</div>
+      <div class="chars">27 / 30</div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">Short description · 80 char</div>
+      <div class="field-value short">80s, 90s &amp; 00s music festival in Bucovina, Romania. Tickets &amp; discounts.</div>
+      <div class="chars">74 / 80</div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">Full description · 4000 char</div>
+      <div class="field-value">Hit Fest Bucovina · 7–9 August 2026
+
+The festival for the music that raised you. Three days, 17 artists, in the valleys of Bucovina, northern Romania.
+
+WHAT THE APP DOES
+• Buy your ticket from your phone in under a minute.
+• Browse the full line-up with exact stage times.
+• Save your favourites and get a notification 15 minutes before they go on stage.
+• Use the festival map — works offline.
+• Every ticket comes with a personal code that unlocks 10–25% discounts at 8 local partners — guesthouses, restaurants and landmarks across Bucovina.
+
+PICK YOUR GENERATION
+Cassette, CD or MP3. The app swaps its colours, fonts and mood based on the year you were born. Because we don't all listen the same way.
+
+LINE-UP 2026
+Andra · Smiley · Bere Gratis · The Motans · 3 Sud Est · Voltaj · Andre · Akcent · and many more.
+
+PARTNERS
+Casa Bucovineană Guesthouse · Cacica Salt Mine · Sucevița Monastery · Hanul Vechi in Câmpulung · ATV Adventure Bucovina · Spa Doftana · and 2 more.
+
+Map and ticket work offline. You only need internet to buy and to activate partner codes.
+
+—
+Organiser: Asociația Hit Fest Bucovina
+Support: contact@hitfestbucovina.ro</div>
+      <div class="chars">~1130 / 4000</div>
+    </div>
+  </div>
+
+  <h3>Texte pentru screenshot-uri în store (5 sloturi)</h3>
+  <div class="grid-2">
+    <div class="listing" style="padding: 18px 22px;">
+      <div class="meta"><span class="lang-pill">RO</span>5 SCREENSHOT CAPTIONS</div>
+      <div class="field">
+        <ol style="padding-left: 18px; margin: 0;">
+          <li><strong>Muzica anilor '80, '90, 2000.</strong><br/><span style="color:var(--ink-2)">Trei zile pe vale, în Bucovina.</span></li>
+          <li><strong>17 artiști, un singur weekend.</strong><br/><span style="color:var(--ink-2)">Line-up complet în aplicație.</span></li>
+          <li><strong>Alege-ți generația.</strong><br/><span style="color:var(--ink-2)">Casete, CD sau MP3 — aplicația se schimbă după tine.</span></li>
+          <li><strong>Bilet în 30 de secunde.</strong><br/><span style="color:var(--ink-2)">Cumperi direct din telefon. Codul tău e gata pe loc.</span></li>
+          <li><strong>20% reducere la 8 parteneri.</strong><br/><span style="color:var(--ink-2)">Cazări, restaurante și obiective din toată Bucovina.</span></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="listing" style="padding: 18px 22px;">
+      <div class="meta"><span class="lang-pill">EN</span>5 SCREENSHOT CAPTIONS</div>
+      <div class="field">
+        <ol style="padding-left: 18px; margin: 0;">
+          <li><strong>80s, 90s, 00s music.</strong><br/><span style="color:var(--ink-2)">Three days in the valleys of Bucovina.</span></li>
+          <li><strong>17 artists, one weekend.</strong><br/><span style="color:var(--ink-2)">Full line-up inside the app.</span></li>
+          <li><strong>Pick your generation.</strong><br/><span style="color:var(--ink-2)">Cassette, CD or MP3 — the app reshapes itself.</span></li>
+          <li><strong>Ticket in 30 seconds.</strong><br/><span style="color:var(--ink-2)">Buy from your phone. Your code is ready instantly.</span></li>
+          <li><strong>20% off at 8 local partners.</strong><br/><span style="color:var(--ink-2)">Guesthouses, restaurants and landmarks.</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <h2>3 · Push notifications — voce</h2>
+  <p class="lede">Notificările sunt singura formă în care aplicația vorbește când utilizatorul nu o deschide. Sunt rare, scurte, utile. Niciodată „marketing".</p>
+
+  <div class="vocab" style="grid-template-columns: 1fr 2fr;">
+    <div class="row"><div class="to">Cu o săptămână înainte</div>
+      <div>Mai e o săptămână până la Hit Fest. Ți-ai făcut bagajul?</div></div>
+    <div class="row"><div class="to">Cu o zi înainte</div>
+      <div>Mâine începe. Drum bun spre Bucovina.</div></div>
+    <div class="row"><div class="to">Următorul artist (favorit)</div>
+      <div>Andra urcă pe Coral Stage în 15 min. Ești pe drum?</div></div>
+    <div class="row"><div class="to">Schimbare program</div>
+      <div>Smiley s-a mutat de la 21:00 la 22:00 pe Turcoaz Stage.</div></div>
+    <div class="row"><div class="to">Reducere nouă</div>
+      <div>O pensiune nouă a intrat în reduceri: Casa din Vatra Moldoviței · 18%.</div></div>
+    <div class="row"><div class="to">Ultima zi</div>
+      <div>Ultima zi. Andra închide festivalul la 23:00.</div></div>
+    <div class="row"><div class="to">După festival</div>
+      <div>Mersi că ai fost. Ne vedem în 2027.</div></div>
+  </div>
+
+  <hr />
+
+  <h2>4 · Checklist final</h2>
+  <ul>
+    <li>Toate textele sunt cu diacritice.</li>
+    <li>Nici un emoji în paragrafe — doar 📼 💿 🎧 ca semn de generație.</li>
+    <li>Numele festivalului scris uniform: „Hit Fest Bucovina" (în titluri scurte: „Hit Fest").</li>
+    <li>Toate CTA-urile sunt verbe la imperativ: <em>Cumpără, Vezi, Salvează, Folosește</em>.</li>
+    <li>Numerele rămân cifre, datele scrise „7–9 august" (cu en-dash, nu cu cratimă).</li>
+    <li>Versiunile EN nu sună traduse din română — au propriile lor frazări scurte.</li>
+    <li>Listing-urile încap în limitele de caractere ale fiecărui store.</li>
+  </ul>
+
+  <p style="text-align:center; margin-top: 56px; font-size: 12px; color: var(--ink-2); font-family: 'Space Mono', monospace; letter-spacing: 0.1em;">
+    HIT FEST BUCOVINA · TONE OF VOICE · v1
+  </p>
+
+</main>
+</body>
+</html>

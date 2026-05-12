@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="color-scheme" content="light only">
+  <meta name="theme-color" content="#0A2540">
+  <title>Hit Fest Bucovina · Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tokens.css">
+  <style>
+    :root { color-scheme: light; }
+    html, body { margin: 0; height: 100%; background: #0A2540; -webkit-text-fill-color: initial; }
+    /* Block iOS Safari from auto-darkening / inverting colors */
+    @media (prefers-color-scheme: dark) {
+      :root, html, body { color-scheme: light !important; background: #0A2540; }
+    }
+    body {
+      font-family: "Inter", system-ui, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      box-sizing: border-box;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(26,188,156,0.18), transparent 55%),
+        radial-gradient(circle at 85% 90%, rgba(255,107,122,0.18), transparent 55%),
+        #0A2540;
+    }
+    #root { display: contents; }
+
+    /* On narrow viewports, drop the phone frame and go full-bleed */
+    @media (max-width: 460px) {
+      body { padding: 0; background: #f0eee9; }
+      .demo-stage { width: 100vw !important; height: 100vh !important; }
+      .demo-stage > .demo-device { width: 100% !important; height: 100% !important; border-radius: 0 !important; box-shadow: none !important; }
+      .demo-stage > .demo-device > .demo-island { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <template id="__bundler_thumbnail" data-bg-color="#1ABC9C">
+    <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+      <rect width="1200" height="800" fill="#1ABC9C"/>
+      <circle cx="600" cy="400" r="220" fill="#FAF6E8"/>
+      <circle cx="600" cy="400" r="80" fill="#1ABC9C"/>
+      <circle cx="600" cy="400" r="20" fill="#0A2540"/>
+      <text x="600" y="680" font-family="Bebas Neue, Anton, Impact, sans-serif" font-size="84" fill="#FAF6E8" text-anchor="middle" letter-spacing="6">HIT FEST BUCOVINA</text>
+    </svg>
+  </template>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="ios-frame.jsx"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="data.jsx"></script>
+  <script type="text/babel" src="i18n.jsx"></script>
+  <script type="text/babel" src="components.jsx"></script>
+  <script type="text/babel" src="screens-1.jsx"></script>
+  <script type="text/babel" src="screens-2.jsx"></script>
+  <script type="text/babel" src="screens-3.jsx"></script>
+  <script type="text/babel" src="settings.jsx"></script>
+  <script type="text/babel" src="validation.jsx"></script>
+  <script type="text/babel" src="validation-flow.jsx"></script>
+  <script type="text/babel" src="flow-integration.jsx"></script>
+  <script type="text/babel" src="app.jsx"></script>
+
+  <script type="text/babel" data-presets="env,react">
+    // Single-view simulation entry — renders only the app inside one iOS frame.
+    // Replaces the multi-artboard <Root/> from app.jsx.
+    const PHONE_W = 402;
+    const PHONE_H = 874;
+
+    const SingleView = () => {
+      const [ready, setReady] = React.useState(false);
+      React.useEffect(() => {
+        const t = setTimeout(() => setReady(true), 0);
+        return () => clearTimeout(t);
+      }, []);
+
+      const isNarrow = typeof window !== 'undefined' &&
+        window.matchMedia && window.matchMedia('(max-width: 460px)').matches;
+
+      // On narrow screens render the app full-bleed without the iOS chrome.
+      if (isNarrow) {
+        return (
+          <div className="demo-stage" style={{ width: '100vw', height: '100vh' }}>
+            <div className="demo-device" style={{ width: '100%', height: '100%' }}>
+              <HitFestApp initialTheme="cd" skipOnboarding={false} />
+            </div>
+          </div>
+        );
+      }
+
+      // Desktop / wide: show the iOS phone frame.
+      return (
+        <div className="demo-stage" style={{ width: PHONE_W, height: PHONE_H }}>
+          <div className="demo-device" style={{
+            width: PHONE_W, height: PHONE_H,
+            borderRadius: 48, overflow: 'hidden', position: 'relative',
+            background: '#F2F2F7',
+            boxShadow: '0 40px 80px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.06)',
+          }}>
+            <div className="demo-island" style={{
+              position: 'absolute', top: 11, left: '50%', transform: 'translateX(-50%)',
+              width: 126, height: 37, borderRadius: 24, background: '#000', zIndex: 50,
+              pointerEvents: 'none',
+            }} />
+            <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+              <div style={{ flex: 1, overflow: 'hidden' }}>
+                <HitFestApp initialTheme="cd" skipOnboarding={false} />
+              </div>
+            </div>
+            <div style={{
+              position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 60,
+              height: 34, display: 'flex', justifyContent: 'center', alignItems: 'flex-end',
+              paddingBottom: 8, pointerEvents: 'none',
+            }}>
+              <div style={{
+                width: 139, height: 5, borderRadius: 100,
+                background: 'rgba(0,0,0,0.25)',
+              }} />
+            </div>
+          </div>
+        </div>
+      );
+    };
+
+    ReactDOM.createRoot(document.getElementById('root')).render(
+      <LangProvider><SingleView /></LangProvider>
+    );
+  </script>
+</body>
+</html>
