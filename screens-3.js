@@ -719,7 +719,7 @@ const EmptyTicketsState = ({
     width: '100%',
     marginTop: 2
   }
-}, "CUMP\u0102R\u0102 BILET"));
+}, "ADAUG\u0102 BILET"));
 
 // Copy icon (clipboard)
 const CopyGlyph = ({

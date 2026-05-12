@@ -1,4 +1,3 @@
-// Single-view simulation entry — renders only the app inside one iOS frame.
 const PHONE_W = 402;
 const PHONE_H = 874;
 const SingleView = () => {

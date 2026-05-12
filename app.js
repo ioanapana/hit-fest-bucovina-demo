@@ -131,7 +131,7 @@ const HitFestApp = ({
       onBack: () => setPartnerDetail(null),
       onBuyTap: () => {
         setPartnerDetail(null);
-        openLivetickets();
+        setAddFlowOpen(true);
       }
     });
   } else if (detail) {
@@ -166,24 +166,10 @@ const HitFestApp = ({
   } else if (tab === 'map') {
     content = /*#__PURE__*/React.createElement(MapScreen, null);
   } else if (tab === 'reduceri') {
-    content = tickets.length === 0 ? /*#__PURE__*/React.createElement("div", {
-      style: {
-        padding: '24px 16px'
-      }
-    }, /*#__PURE__*/React.createElement(EmptyDiscountsLocked, {
-      onAddTicket: () => setAddFlowOpen(true),
-      onSkip: () => setTab('home')
-    }), /*#__PURE__*/React.createElement("div", {
-      style: {
-        marginTop: 18
-      }
-    }, /*#__PURE__*/React.createElement(PartnersBlurredTeaser, {
-      partners: window.PARTNERS || [],
-      onAddTicket: () => setAddFlowOpen(true)
-    }))) : /*#__PURE__*/React.createElement(PartnersScreen, {
+    content = /*#__PURE__*/React.createElement(PartnersScreen, {
       tickets: tickets,
       onPartnerTap: id => setPartnerDetail(id),
-      onBuyTap: openLivetickets,
+      onBuyTap: () => setAddFlowOpen(true),
       onTabChange: setTab
     });
   } else if (tab === 'my') {
