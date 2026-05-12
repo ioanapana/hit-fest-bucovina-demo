@@ -90,6 +90,14 @@ const MethodSelector = ({ onPick, onClose }) => {
           badgeColor="var(--hf-turcoaz)"
           onPress={() => onPick('photo')}
         />
+        <MethodCard
+          icon="sparkle"
+          title="BILET DEMO"
+          desc="Generează un bilet de test instant ca să poți explora reducerile și codurile partenere fără un bilet real."
+          badge="DEMO"
+          badgeColor="var(--hf-galben)"
+          onPress={() => onPick('demo')}
+        />
       </div>
 
       <div style={{ flex: 1 }} />
@@ -818,7 +826,8 @@ const SuccessScreen = ({ ticket, code, email, onSeeDiscounts, onAddAnother }) =>
 
         <div style={{ marginTop: 14, fontSize: 13,
           color: 'var(--color-text-secondary)', lineHeight: 1.5, maxWidth: 320 }}>
-          Codul rămâne salvat pe acest telefon. Ți-l vom trimite și pe email la <strong>{email}</strong>.
+          Codul rămâne salvat pe acest telefon.
+          {email ? <> Ți-l vom trimite și pe email la <strong>{email}</strong>.</> : ' Bilet de tip demo — folosește-l ca să încerci reducerile.'}
         </div>
         <div style={{ fontSize: 12, color: 'var(--color-text-secondary)',
           fontStyle: 'italic', opacity: 0.85 }}>
@@ -914,7 +923,18 @@ const AddTicketFlow = ({ onClose, onComplete }) => {
 
   if (step === 'method') {
     return <MethodSelector onClose={onClose}
-      onPick={(m) => setStep(m)} />;
+      onPick={(m) => {
+        if (m === 'demo') {
+          // Demo path: instantly create a 3-day pass ticket, skip email, go to success.
+          const demoDraft = { type: '3day', photoUri: null, qrData: 'DEMO-TICKET' };
+          const { user, ticket } = addTicketToUser(demoDraft);
+          setDraft(demoDraft);
+          setResult({ code: user.userCode, email: null, ticket });
+          setStep('success');
+          return;
+        }
+        setStep(m);
+      }} />;
   }
   if (step === 'photo') {
     return <PhotoFlow
